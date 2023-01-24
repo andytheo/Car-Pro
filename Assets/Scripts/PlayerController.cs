@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 forwardMovement = transform.forward * speed * Time.fixedDeltaTime;
-        Vector3 horizontalMovement = transform.right * horizontalDirection * speed 
+        Vector3 horizontalMovement = transform.right * horizontalDirection * speed
             * Time.fixedDeltaTime * horizontalDirectionSpeed;
 
         rb.MovePosition(rb.position + forwardMovement + horizontalMovement);
@@ -21,6 +19,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalDirection= Input.GetAxis("Horizontal");
+        horizontalDirection = Input.GetAxis("Horizontal");
     }
 }
