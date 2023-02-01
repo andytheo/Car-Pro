@@ -6,7 +6,12 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     float horizontalDirection;
     float horizontalDirectionSpeed = 2;
+    private GameManager gameManager;
 
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
     private void FixedUpdate()
     {
         Vector3 forwardMovement = transform.forward * speed * Time.fixedDeltaTime;
@@ -20,5 +25,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         horizontalDirection = Input.GetAxis("Horizontal");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "coin")
+        {
+            Destroy(other.gameObject);
+            gameManager.IncreaseScore();
+        }
     }
 }
