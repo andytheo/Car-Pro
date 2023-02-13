@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 4;
+    public float speed = 5;
     public Rigidbody rb;
     float horizontalDirection;
     float horizontalDirectionSpeed = 2;
     private GameManager gameManager;
+    public GameObject coinEffect;
 
     private void Awake()
     {
@@ -31,8 +32,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "coin")
         {
-            Destroy(other.gameObject);
             gameManager.IncreaseScore();
+
+            GameObject g = Instantiate(coinEffect, transform.position, Quaternion.identity);
+            Destroy(g, 2);
+            Destroy(other.gameObject);
         }
     }
 }
