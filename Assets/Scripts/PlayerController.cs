@@ -22,11 +22,11 @@ public class PlayerController : MonoBehaviour
         // Accelerating and decelerrating
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            speed += 2f;
+            speed += 1.5f * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            speed -= .5f;
+            speed -= 1.5f * Time.deltaTime;
         }
 
         if (!PauseMenu.isPaused)
@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
        horizontalDirection = Input.GetAxis("Horizontal");
+       horizontalDirectionSpeed = .50f; // reduce the car's horizontal speed
     }
 
     private void OnTriggerEnter(Collider other)
