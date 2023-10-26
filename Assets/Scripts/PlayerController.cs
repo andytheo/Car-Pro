@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     {
        horizontalDirection = Input.GetAxis("Horizontal");
        horizontalDirectionSpeed = .50f; // reduce the car's horizontal speed
+
     }
 
     private void OnTriggerEnter(Collider other)
